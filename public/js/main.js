@@ -108,7 +108,7 @@ launchBtn.onclick = () => {
   if (totalPoints < launchPoints) {
     launchMessage.textContent = "You do not have enough points to launch!";
     launchMessage.style.display = "block";
-    setTimeout(() => { launchMessage.style.display = "none"; }, 15000);
+    setTimeout(() => { launchMessage.style.display = "none"; }, 3000);
   } else {
     // Reset points and tasks
     document.querySelectorAll("#tasklist li input[type='checkbox']").forEach(checkbox => {
