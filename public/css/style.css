@@ -53,7 +53,7 @@ img {
 
 .navbar .quote {
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .navbar .main-menu ul {
@@ -139,6 +139,11 @@ img {
   margin-bottom: 15px;
   font-size: 40px;
   font-weight: bold;
+}
+
+#tasklist li.completed label {
+  text-decoration: line-through;
+  color: #888;
 }
 
 /* UL */
