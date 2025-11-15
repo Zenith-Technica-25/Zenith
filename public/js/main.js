@@ -1,55 +1,54 @@
-const tasks = 
-    [{ text: " Go for a walk", points: 5},
-    { text: " Journal", points: 5},
-    { text: " Eat breakfast", points: 5},
-    { text: " Take a break", points: 5},
-    { text: " Meditate", points: 5},
-    { text: " Spend at least 15 minutes reading", points: 5},
-    { text: " Clean/declutter a small space", points: 5}];
+const tasks = [
+  { text: "Go for a walk", points: 100},
+  { text: "Journal", points: 100},
+  { text: "Eat breakfast", points: 100},
+  { text: "Take a break", points: 100},
+  { text: "Meditate", points: 100},
+  { text: "Read 15 mins", points: 100},
+  { text: "Clean small space", points: 50}
+];
 
-
-
-// ===== SELECT TASK LIST AND BUTTON =====
+// DOM elements
 const taskList = document.getElementById("tasklist");
 const calculateBtn = document.querySelector(".calculate-points");
+const totalPointsEl = document.querySelector(".total_points h3");
+const pointsTillNextPhaseEl = document.querySelector(".points_till_next_phase h3");
+const pointsTillLaunchEl = document.querySelector(".points_till_launch h3");
+const progressBarEl = document.querySelector(".progress-bar");
 
-// ===== CREATE TASK LIST =====
+const rocketSpace = document.querySelector(".rocket_space");
+const rocketPhases = rocketSpace.querySelectorAll("div"); // Phase1-4
+
+const phasePoints = [100, 200, 300, 400];
+const launchPoints = 400;
+
+// Build task list
 tasks.forEach((task, index) => {
   const li = document.createElement("li");
-
-  // Create checkbox
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = `task-${index}`;
 
-  // Create label
   const label = document.createElement("label");
   label.htmlFor = checkbox.id;
   label.textContent = task.text;
 
-  // Add point value span
   const pointsSpan = document.createElement("span");
   pointsSpan.textContent = ` (${task.points} pts)`;
-  pointsSpan.style.color = "#888888"; // lighter text color
+  pointsSpan.style.color = "#888";
   pointsSpan.style.fontSize = "0.9em";
   label.appendChild(pointsSpan);
 
-  // Checkbox change behavior (move tasks)
   checkbox.addEventListener("change", () => {
     li.classList.toggle("completed", checkbox.checked);
-
     setTimeout(() => {
-      if (checkbox.checked) {
-        taskList.appendChild(li); // move to bottom
-      } else {
+      if (checkbox.checked) taskList.appendChild(li);
+      else {
         const firstCompleted = taskList.querySelector(".completed");
-        if (firstCompleted) {
-          taskList.insertBefore(li, firstCompleted); // move above first completed
-        } else {
-          taskList.appendChild(li);
-        }
+        if (firstCompleted) taskList.insertBefore(li, firstCompleted);
+        else taskList.appendChild(li);
       }
-    }, 500); // delay in milliseconds (longer delay)
+    }, 500);
   });
 
   li.appendChild(checkbox);
@@ -57,16 +56,35 @@ tasks.forEach((task, index) => {
   taskList.appendChild(li);
 });
 
-// ===== CALCULATE POINTS BUTTON =====
+// Calculate points
 calculateBtn.addEventListener("click", () => {
   let totalPoints = 0;
-
   document.querySelectorAll("#tasklist li").forEach((taskItem, index) => {
     const checkbox = taskItem.querySelector("input[type='checkbox']");
-    if (checkbox.checked) {
-      totalPoints += tasks[index].points;
-    }
+    if (checkbox.checked) totalPoints += tasks[index].points;
   });
 
-  alert(`You have earned ${totalPoints} points!`);
+  totalPointsEl.textContent = `Total Points: ${totalPoints}`;
+
+  // Determine phase
+  let currentPhase = 0;
+  for (let i = 0; i < phasePoints.length; i++) {
+    if (totalPoints >= phasePoints[i]) currentPhase = i + 1;
+  }
+
+  rocketPhases.forEach((phase, idx) => {
+    phase.style.display = (idx === currentPhase - 1) ? "block" : "none";
+  });
+
+  // Points till next phase
+  if (currentPhase < phasePoints.length) {
+    pointsTillNextPhaseEl.textContent = `Points until next phase: ${phasePoints[currentPhase] - totalPoints}`;
+  } else pointsTillNextPhaseEl.textContent = `Points until next phase: 0`;
+
+  // Points till launch
+  pointsTillLaunchEl.textContent = `Points until launch: ${launchPoints - totalPoints}`;
+
+  // Update progress bar
+  const progressPercent = Math.min((totalPoints / launchPoints) * 100, 100);
+  progressBarEl.style.width = progressPercent + "%";
 });
