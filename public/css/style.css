@@ -12,9 +12,21 @@ body {
     color: var(--light);
 }
 
+a {
+    text-decoration: none; /*removes underline*/
+    color: var(--light);
+}
+
+ul { /*unordered lists*/
+    list-style: none; /*removes bullets*/
+}
+
 .navbar { padding: 20px; }
 .navbar .container { display: flex; justify-content: space-between; align-items: center; }
 
+.navbar .quote{
+    font-size: 15px;
+}
 .container-wide { display: flex; gap: 5%; justify-content: center; margin: 20px; }
 
 .rocket {
