@@ -29,6 +29,8 @@ tasks.forEach((task, index) => {
   checkbox.type = "checkbox";
   checkbox.id = `task-${index}`;
 
+  checkbox.dataset.points = task.points;
+
   const label = document.createElement("label");
   label.htmlFor = checkbox.id;
   label.textContent = task.text;
@@ -59,9 +61,8 @@ tasks.forEach((task, index) => {
 // Calculate points
 calculateBtn.addEventListener("click", () => {
   let totalPoints = 0;
-  document.querySelectorAll("#tasklist li").forEach((taskItem, index) => {
-    const checkbox = taskItem.querySelector("input[type='checkbox']");
-    if (checkbox.checked) totalPoints += tasks[index].points;
+  document.querySelectorAll("#tasklist li input[type='checkbox']").forEach(checkbox => {
+    if (checkbox.checked) totalPoints += parseInt(checkbox.dataset.points);
   });
 
   totalPointsEl.textContent = `Total Points: ${totalPoints}`;
