@@ -1,0 +1,108 @@
+*{ /*resets settings*/
+    box-sizing: border-box; /*makes sure boxes are not changes by padding*/
+    margin: 0;
+    padding: 0;
+
+}
+
+/*creates variables*/
+:root {
+    --bg-color: #02324F;
+    --light: #DBE5E6;
+    --grey-color: #4C596B;
+}
+
+body {
+    font-family: 'Zain', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    background: var(--bg-color);
+    overflow-x: hidden;
+    color: var(--light);
+}
+
+a {
+    text-decoration: none; /*removes underline*/
+    color: var(--light);
+}
+
+ul { /*unordered lists*/
+    list-style: none; /*removes bullets*/
+}
+
+img {
+    max-width: 100%; /* prevents imgs from breaking out of divs*/
+}
+
+
+/* NAVBAR */
+.navbar {
+    padding: 15px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .container img{
+    width: 5%;
+    margin: 10px 0;
+}
+
+.navbar .main-menu ul {
+    display: flex;
+}
+
+.navbar ul li a {
+    padding: 10px 15px;
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.navbar ul li a:hover {
+    color: var(--bg-color);
+}
+
+/* MAIN */
+
+.main .container-wide {
+    position: relative;
+    height: 900px;
+}
+
+.main .container-wide .main-content{
+    position: absolute; /* Takes the element out of the normal flow */
+    justify-content: center;
+    top: 0; /* Adjust as needed for specific placement */
+    left: 0; /* Adjust as needed for specific placement */
+    width: 100%; /* Or specific width */
+    height: 100%; /* Or specific height */
+    z-index: 2; /* Higher z-index brings it forward */
+}
+
+.main img{
+    display: block;
+    justify-self: center;
+    align-items: center;
+    max-width: 100%;
+    margin-bottom: 30px;
+    margin-top: 80px;
+}
+
+.main .main-text{
+    display: block;
+    justify-self: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: 'Zain', sans-serif;
+    font-display: bold;
+}
+
+.main .links ul{
+    display: flex;
+    justify-content: center;
+}
