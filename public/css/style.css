@@ -12,6 +12,13 @@ body {
     color: var(--light);
 }
 
+button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    background: #888888;
+    color: #ccc;
+}
+
 a {
     text-decoration: none; /*removes underline*/
     color: var(--light);
@@ -195,8 +202,15 @@ ul { /*unordered lists*/
   color: white;
 }
 
+.launch_section {
+  text-align: center; /* centers everything inside */
+  margin-top: 20px;
+}
+
 #launchMessage {
-  margin-top: 5px;
-  font-size: 0.9em;
+  margin-top: 10px; /* space between button and message */
+  display: none;
+  color: red;
+  font-weight: bold;
 }
 
