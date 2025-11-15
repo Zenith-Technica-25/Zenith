@@ -88,4 +88,41 @@ calculateBtn.addEventListener("click", () => {
   // Update progress bar
   const progressPercent = Math.min((totalPoints / launchPoints) * 100, 100);
   progressBarEl.style.width = progressPercent + "%";
+
+  // ---- Launch button logic starts here ----
+  if (totalPoints >= launchPoints) {
+    launchBtn.classList.remove("grey");
+    launchBtn.classList.add("red");
+  } else {
+    launchBtn.classList.remove("red");
+    launchBtn.classList.add("grey");
+  }
 });
+
+launchBtn.onclick = () => {
+  let totalPoints = 0;
+  document.querySelectorAll("#tasklist li input[type='checkbox']").forEach(checkbox => {
+    if (checkbox.checked) totalPoints += parseInt(checkbox.dataset.points);
+  });
+
+  if (totalPoints < launchPoints) {
+    launchMessage.textContent = "You do not have enough points to launch!";
+    launchMessage.style.display = "block";
+    setTimeout(() => { launchMessage.style.display = "none"; }, 15000);
+  } else {
+    // Reset points and tasks
+    document.querySelectorAll("#tasklist li input[type='checkbox']").forEach(checkbox => {
+      checkbox.checked = false;
+      checkbox.parentElement.classList.remove("completed");
+    });
+
+    totalPointsEl.textContent = `Total Points: 0`;
+    pointsTillNextPhaseEl.textContent = `Points until next phase: ${phasePoints[0]}`;
+    pointsTillLaunchEl.textContent = `Points until launch: ${launchPoints}`;
+    progressBarEl.style.width = "0%";
+    rocketPhases.forEach(phase => phase.style.display = "none");
+    launchBtn.classList.remove("red");
+    launchBtn.classList.add("grey");
+  }
+};
+
