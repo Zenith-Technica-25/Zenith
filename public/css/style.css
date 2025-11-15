@@ -77,6 +77,19 @@ img {
 .main .container-wide {
     position: relative;
     height: 900px;
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.rocket{
+    background: #474973;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding-right: 30px;
 }
 
 .main .container-wide .main-content{
