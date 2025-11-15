@@ -37,18 +37,13 @@ img {
 
 /* NAVBAR */
 .navbar {
-    padding: 15px;
+    padding: 20px;
 }
 
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.navbar .container img{
-    width: 5%;
-    margin: 10px 0;
 }
 
 .navbar .quote {
@@ -115,12 +110,23 @@ img {
     background-color: #e9e9e9;
     color:#000000;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 12px;
 }
-
 
 .Phase1{
     display: on;
+    max-width: 300px;
+}
+.Phase2{
+    display: none;
+    max-width: 300px;
+}
+.Phase3{
+    display: none;
+    max-width: 300px;
+}
+.Phase4{
+    display: none;
     max-width: 300px;
 }
 
@@ -183,7 +189,7 @@ img {
     right: 20px; /* distance from right */
     cursor: pointer;
     font-size: 16px;
-    background-color: #6C63FF;
+    background-color: #A3001E;
     color: #fff;
     border-radius: 50%;
     width: 24px;
@@ -248,7 +254,7 @@ img {
 }
 
 .calculate-points {
-  background-color: #6C63FF;
+  background-color: #A3001E;
   color: white;
   text-align: center;
   padding: 12px 20px;
