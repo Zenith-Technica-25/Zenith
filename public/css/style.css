@@ -76,11 +76,11 @@ img {
 
 .main .container-wide {
     position: relative;
-    height: 900px;
     display: flex;
     gap: 5%;
     margin: 20px;
     justify-content: center;
+
 }
 
 .rocket{
@@ -109,14 +109,15 @@ img {
     align-items: center;
 }
 
-.progress{
+.under_rocket{
     width: 100%;
     padding: 10px;
-    background-color: #ffff;
+    background-color: #e9e9e9;
     color:#000000;
     border-radius: 10px;
     font-size: 15px;
 }
+
 
 .Phase1{
     display: on;
@@ -159,22 +160,66 @@ img {
 }
 
 .task-list {
-  background: #474973;
-  padding: 20px;
-  border-radius: 10px;
-  width: 40%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-
+    position: relative; /* Make this the reference for absolute positioning */
+    background: #474973;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .task-list h1 {
-  margin-bottom: 15px;
-  font-size: 40px;
-  font-weight: bold;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 50%; /* space between "To-Do" and icon */
 }
 
+/*Formatting Help - Question mark*/
+.help-icon {
+    position: absolute;
+    top: 15px;  /* distance from top */
+    right: 20px; /* distance from right */
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #6C63FF;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 10; /* above other content */
+}
 
+/* Tooltip box */
+.tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: #0D0C1D;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    position: absolute;
+    top: -40px; /* above the icon */
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+/* Show tooltip on hover */
+.help-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 /* UL */
 #tasklist {
   list-style: none;
