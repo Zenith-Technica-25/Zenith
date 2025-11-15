@@ -161,10 +161,6 @@ img {
   font-weight: bold;
 }
 
-#tasklist li.completed label {
-  text-decoration: line-through;
-  color: #888;
-}
 
 /* UL */
 #tasklist {
@@ -180,5 +176,31 @@ img {
   margin-bottom: 8px;
   border-radius: 6px;
   font-size: 16px;
-  color: #000000;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* smooth move and fade */
+}
+
+#tasklist li.completed label {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.7; /* slight fade */
+}
+
+.calculate-points {
+  background-color: #6C63FF;
+  color: white;
+  text-align: center;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer; /* makes it clickable */
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.calculate-points:hover {
+  background-color: #5952d4;
 }
