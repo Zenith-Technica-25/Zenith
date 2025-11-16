@@ -3,13 +3,13 @@ const tasksKey = "tasks"; // localStorage key
 
 // Default tasks
 let tasks = [
-  { text: "Go for a walk", points: 100, completed: false },
-  { text: "Journal", points: 100, completed: false },
-  { text: "Eat breakfast", points: 100, completed: false },
-  { text: "Take a break", points: 100, completed: false },
-  { text: "Meditate", points: 100, completed: false },
-  { text: "Read 15 mins", points: 100, completed: false },
-  { text: "Clean small space", points: 50, completed: false }
+  { text: "Go for a walk", points: 75, completed: false },
+  { text: "Journal", points: 25, completed: false },
+  { text: "Eat breakfast", points: 25, completed: false },
+  { text: "Take a break", points: 25, completed: false },
+  { text: "Meditate", points: 25, completed: false },
+  { text: "Read 15 mins", points: 50, completed: false },
+  { text: "Clean small space", points: 100, completed: false }
 ];
 
 // Load saved tasks from localStorage
