@@ -28,12 +28,60 @@ ul { /*unordered lists*/
     list-style: none; /*removes bullets*/
 }
 
+/* NAVBAR */
 .navbar { padding: 20px; }
 .navbar .container { display: flex; justify-content: space-between; align-items: center; }
 
 .navbar .quote{
     font-size: 15px;
 }
+
+/* LOGIN */
+.login-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-box {
+    background: #161B33;
+    padding: 25px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+
+.login-overlay h2{
+    margin-right: 20px;
+}
+
+form input {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;     /* very high so it overlays everything else */
+  margin: 5px;
+}
+
+form button {
+  margin-top: 10px;     /* adds space above the button */
+  margin-right: 20px;
+  margin-left: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #A3001E;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* MAIN */
 .container-wide { display: flex; gap: 5%; justify-content: center; margin: 20px; }
 
 .rocket {
