@@ -144,3 +144,18 @@ ul { /*unordered lists*/
     font-size: 15px;
 }
 .container-wide { display: flex; gap: 5%; justify-content: center; margin: 20px; }
+
+.shuttle-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.shuttle-img {
+    max-width: 400px;   /* adjust size */
+    width: 100%;
+    height: auto;
+}
+
