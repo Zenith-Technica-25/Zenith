@@ -104,6 +104,49 @@ ul { /*unordered lists*/
     height: 100%; /* make image fit container height */
 }
 
+/* Rocket flight path animation */
+@keyframes rocketFlyCurve {
+  0% {
+    transform: translate(0%, 0%) scale(1) rotate(0deg);
+  }
+  12% {
+    transform: translate(-12%, -12%) scale(0.9) rotate(40deg);
+  }
+  24% {
+    transform: translate(5%, -20%) scale(0.8) rotate(90deg);
+  }
+  36% {
+    transform: translate(40%, -5%) scale(0.7) rotate(140deg);
+  }
+  48% { 
+    transform: translate(20%, 25%) scale(0.55) rotate(200deg);
+  }
+  60% {
+    transform: translate(-10%, 25%) scale(0.45) rotate(250deg);
+  }
+  72% {
+    transform: translate(-25%, 10%) scale(0.35) rotate(300deg);
+  }
+  84% {
+    transform: translate(-15%, -5%) scale(0.25) rotate(370deg);
+  }
+  92% {
+    transform: translate(10%, -12%) scale(0.2) rotate(400deg);
+  }
+  100% {
+    transform: translate(650px, -120px) scale(0.15) rotate(480deg);
+  }
+}
+
+
+
+.launch-animation {
+  animation: rocketFlyCurve 5s ease-in forwards;
+  will-change: transform;
+  z-index: 999;
+  position: relative;
+}
+
 
 .under_rocket{
     width: 100%;

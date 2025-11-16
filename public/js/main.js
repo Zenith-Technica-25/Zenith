@@ -138,7 +138,30 @@ launchBtn.onclick = () => {
     saveTasks();
     renderTasks();
     updateProgress();
-  }
+
+    // Trigger Phase4 rocket flight animation
+  const rocket = document.getElementById("phase4Rocket");
+  const phase4 = rocket.parentElement;
+  // Make sure Phase4 stays visible
+  rocketPhases.forEach(p => p.style.display = "none");
+  phase4.style.display = "block";
+
+  // Start animation
+  rocket.classList.remove("launch-animation");
+  void rocket.offsetWidth; // reset animation
+  rocket.classList.add("launch-animation");
+
+  // Only AFTER animation finishes → reset tasks + progress
+  rocket.addEventListener("animationend", () => {
+    addShuttleModule();
+
+    // Reset tasks
+    tasks.forEach(t => t.completed = false);
+    saveTasks();
+    renderTasks();
+    updateProgress();
+  }, { once: true });
+};
 };
 
 // Add new task form submission
