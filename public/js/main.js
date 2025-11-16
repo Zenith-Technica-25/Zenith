@@ -126,3 +126,20 @@ launchBtn.onclick = () => {
   }
 };
 
+const starsContainer = document.querySelector('.stars');
+const numStars = 200; // number of stars
+const maxStarSize = 3; // in px
+
+for (let i = 0; i < numStars; i++) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  const size = Math.random() * maxStarSize + 1; // size 1px to 4px
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.left = `${Math.random() * 100}vw`;
+  star.style.opacity = Math.random() * 0.8 + 0.2; // random opacity
+  star.style.animationDuration = `${Math.random() * 3 + 2}s`; // random twinkle speed
+  starsContainer.appendChild(star);
+}
+
