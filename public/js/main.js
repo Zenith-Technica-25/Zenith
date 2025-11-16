@@ -1,5 +1,6 @@
 const tasksKey = "tasks"; // localStorage key
 
+// Default tasks
 let tasks = [
   { text: "Go for a walk", points: 100, completed: false },
   { text: "Journal", points: 100, completed: false },
@@ -14,6 +15,7 @@ let tasks = [
 const savedTasks = JSON.parse(localStorage.getItem(tasksKey));
 if (savedTasks) tasks = savedTasks;
 
+// DOM elements
 const taskList = document.getElementById("tasklist");
 const totalPointsEl = document.querySelector(".total_points h3");
 const pointsTillNextPhaseEl = document.querySelector(".points_till_next_phase h3");
@@ -24,10 +26,15 @@ const rocketPhases = rocketSpace.querySelectorAll("div"); // Phase1-4
 const launchBtn = document.getElementById("launchBtn");
 const launchMessage = document.getElementById("launchMessage");
 
+// Form elements for adding tasks
+const addTaskForm = document.getElementById("addTaskForm");
+const taskDescInput = document.getElementById("taskDesc");
+
+// Phase points
 const phasePoints = [100, 200, 300, 400];
 const launchPoints = 400;
 
-// Render tasks
+// Render all tasks
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -35,7 +42,7 @@ function renderTasks() {
   const unchecked = tasks.filter(t => !t.completed);
   const checked = tasks.filter(t => t.completed);
 
-  unchecked.concat(checked).forEach((task, index) => {
+  unchecked.concat(checked).forEach(task => {
     const li = document.createElement("li");
 
     const checkbox = document.createElement("input");
@@ -71,6 +78,7 @@ function renderTasks() {
     li.appendChild(checkbox);
     li.appendChild(label);
     li.appendChild(deleteBtn);
+
     if (task.completed) li.classList.add("completed");
 
     taskList.appendChild(li);
@@ -82,13 +90,13 @@ function saveTasks() {
   localStorage.setItem(tasksKey, JSON.stringify(tasks));
 }
 
-// Update progress bar and points
+// Update points and rocket progress
 function updateProgress() {
   const totalPoints = tasks.filter(t => t.completed).reduce((sum, t) => sum + t.points, 0);
 
   totalPointsEl.textContent = `Total Points: ${totalPoints}`;
 
-  // Determine phase
+  // Determine current phase
   let currentPhase = 0;
   for (let i = 0; i < phasePoints.length; i++) {
     if (totalPoints >= phasePoints[i]) currentPhase = i + 1;
@@ -98,18 +106,14 @@ function updateProgress() {
     phase.style.display = idx === currentPhase - 1 ? "block" : "none";
   });
 
-  // Points till next phase
   pointsTillNextPhaseEl.textContent = currentPhase < phasePoints.length
     ? `Points until next phase: ${phasePoints[currentPhase] - totalPoints}`
     : `Points until next phase: 0`;
 
-  // Points till launch
   pointsTillLaunchEl.textContent = `Points until launch: ${launchPoints - totalPoints}`;
 
-  // Update progress bar
   progressBarEl.style.width = `${Math.min((totalPoints / launchPoints) * 100, 100)}%`;
 
-  // Launch button color
   if (totalPoints >= launchPoints) {
     launchBtn.classList.remove("grey");
     launchBtn.classList.add("red");
@@ -135,9 +139,22 @@ launchBtn.onclick = () => {
   }
 };
 
-// Initialize
-renderTasks();
-updateProgress();
+// Add new task form submission
+addTaskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const desc = taskDescInput.value.trim();
+  const points = parseInt(document.querySelector('input[name="points"]:checked').value);
+
+  if (!desc) return;
+
+  tasks.push({ text: desc, points, completed: false });
+  saveTasks();
+  renderTasks();
+  updateProgress();
+
+  addTaskForm.reset();
+});
 
 // STAR BACKGROUND
 const starsContainer = document.querySelector('.stars');
@@ -155,3 +172,7 @@ for (let i = 0; i < numStars; i++) {
   star.style.animationDuration = `${Math.random() * 3 + 2}s`;
   starsContainer.appendChild(star);
 }
+
+// Initialize
+renderTasks();
+updateProgress();

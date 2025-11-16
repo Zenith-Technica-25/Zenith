@@ -66,9 +66,21 @@
             <h1>To-Do</h1>
             <ul id="tasklist"></ul>
             <div class="input">
-              
+  <form id="addTaskForm">
+    <label for="taskDesc">Task Description:</label>
+    <input type="text" id="taskDesc" name="taskDesc" placeholder="Enter task..." required><br><br>
 
-            </div>
+    <div class="point_options">
+      <label><input type="radio" name="points" value="25" checked> 25 pts</label>
+      <label><input type="radio" name="points" value="50"> 50 pts</label>
+      <label><input type="radio" name="points" value="75"> 75 pts</label>
+      <label><input type="radio" name="points" value="100"> 100 pts</label>
+    </div>
+    
+    <input type="submit" value="Add Task">
+  </form>
+</div>
+
 
         </div>
     </div>

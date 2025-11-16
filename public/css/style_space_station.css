@@ -1,0 +1,95 @@
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg-color: #0D0C1D;
+    --light: #DBE5E6;
+}
+
+.stars {
+  position: fixed;   /* behind everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* don't block clicks */
+  z-index: -1;          /* behind all content */
+  background: #0D0C1D;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.8;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+  100% { opacity: 0.3; transform: translateY(0); }
+}
+
+.shooters {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 80px;        /* longer tail */
+  height: 15px;        /* thin streak */
+  background: linear-gradient(135deg, orange, transparent); /* comet tail */
+  border-radius: 50%;
+  opacity: 0.8;
+  transform-origin: left center; /* rotate around the start of tail */
+  animation: shoot linear forwards;
+}
+
+@keyframes shoot {
+  from {
+    transform: translate(0,0) rotate(220deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(800px, 800px) rotate(220deg); /* moves diagonally */
+    opacity: 0;
+  }
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    background: var(--bg-color);
+    color: var(--light);
+}
+
+button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    background: #888888;
+    color: #ccc;
+}
+
+a {
+    text-decoration: none; /*removes underline*/
+    color: var(--light);
+}
+
+ul { /*unordered lists*/
+    list-style: none; /*removes bullets*/
+}
+
+.navbar { padding: 20px; }
+.navbar .container { display: flex; justify-content: space-between; align-items: center; }
+
+.navbar .quote{
+    font-size: 15px;
+}
+.container-wide { display: flex; gap: 5%; justify-content: center; margin: 20px; }
