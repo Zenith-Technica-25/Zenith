@@ -148,14 +148,37 @@ ul { /*unordered lists*/
 .shuttle-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;    /* <— fix: make vertical */
+    align-items: center;       /* center everything horizontally */
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 
 .shuttle-img {
     max-width: 400px;   /* adjust size */
     width: 100%;
     height: auto;
 }
+
+.shuttle-start {
+  display: block;
+  margin: 40px auto 0 auto;
+  width: 300px;       /* adjust if needed */
+}
+
+#shuttleStack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.shuttle-img,
+#shuttleStack img {
+    width: 400px;
+    height: auto;
+}
+
 

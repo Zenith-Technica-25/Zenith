@@ -63,3 +63,22 @@ setInterval(() => {
 document.getElementById("closePopup").addEventListener("click", () => {
     document.getElementById("starPopup").style.display = "none";
 });
+
+// Load stacked shuttle modules
+const moduleContainer = document.getElementById("shuttleStack");
+const count = parseInt(localStorage.getItem("shuttleModules") || "0");
+
+const moduleImages = [
+  "shuttle_images/Shuttle_Mod1.png",
+  "shuttle_images/Shuttle_Mod2.png",
+  "shuttle_images/Shuttle_Mod3.png",
+  "shuttle_images/Shuttle_Mod4.png"
+];
+
+for (let i = 0; i < count; i++) {
+  const img = document.createElement("img");
+  img.src = moduleImages[i % 4];  // rotates 1→4
+  moduleContainer.appendChild(img);
+}
+
+

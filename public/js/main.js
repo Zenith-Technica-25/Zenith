@@ -1,3 +1,4 @@
+const shuttleKey = "shuttleModules";  
 const tasksKey = "tasks"; // localStorage key
 
 // Default tasks
@@ -131,6 +132,7 @@ launchBtn.onclick = () => {
     launchMessage.style.display = "block";
     setTimeout(() => { launchMessage.style.display = "none"; }, 3000);
   } else {
+    addShuttleModule();
     // Reset all tasks
     tasks.forEach(t => t.completed = false);
     saveTasks();
@@ -176,3 +178,9 @@ for (let i = 0; i < numStars; i++) {
 // Initialize
 renderTasks();
 updateProgress();
+
+function addShuttleModule() {
+  let count = parseInt(localStorage.getItem(shuttleKey) || "0");
+  count++;
+  localStorage.setItem(shuttleKey, count);
+}
