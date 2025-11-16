@@ -217,6 +217,7 @@ ul { /*unordered lists*/
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  border-radius: 10px;
 }
 
 #launchBtn.grey {
