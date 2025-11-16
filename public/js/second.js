@@ -1,4 +1,3 @@
-
 // STAR BACKGROUND
 const starsContainer = document.querySelector('.stars');
 const numStars = 200;
@@ -18,31 +17,49 @@ for (let i = 0; i < numStars; i++) {
 
 // SHOOTING STARS
 const shooterContainer = document.querySelector('.shooters');
+// SELF CARE TIPS
+const tips = [
+    "Don't forget to stay hydrated!", "Don't be afraid to ask for help!", "Take the time to plan at least one fun activity every day", "Sleep is very important. Aim for 8-10 hours a night!", "Try some aromatherapy!", "Aim for the Sun and land amongst the stars!", "Even in the darkest night, there's a star to guide the way", "Don't forget to go outside and face the sky!"
+];
+
 function createShootingStar() {
     const shootingStar = document.createElement('div');
     shootingStar.classList.add('shooting-star');
+    var randomTip = Math.floor(Math.random() * tips.length);
+    // Click → open popup
+    shootingStar.addEventListener("click", () => {
+        document.getElementById("starPopup").style.display = "flex";
+        document.getElementById("tipText").innerHTML = tips[randomTip];
+    });
 
-    // Random start position (mostly top-left to top-right diagonal)
-    const startX = Math.random() * 100; // percent of viewport width
-    const startY = Math.random() * 30; // top 30% of viewport height
+    // Random positions
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 30;
     shootingStar.style.top = `${startY}vh`;
     shootingStar.style.left = `${startX}vw`;
 
-    // Random animation duration
-    const duration = Math.random() * 1 + 10; // 0.8s - 1.8s
+    // Random animation speed
+    const duration = Math.random() * 1 + 10;
     shootingStar.style.animationDuration = `${duration}s`;
 
-    starsContainer.appendChild(shootingStar);
+    // FIX: Append to proper container!
+    shooterContainer.appendChild(shootingStar);
 
-    // Remove after animation ends
     shootingStar.addEventListener('animationend', () => {
         shootingStar.remove();
     });
 }
 
-// Create shooting stars at random intervals
 setInterval(() => {
-    if (Math.random() < 0.3) { // 30% chance every interval
+    if (Math.random() < 0.3) {
         createShootingStar();
     }
 }, 1000);
+
+
+
+
+// Close popup
+document.getElementById("closePopup").addEventListener("click", () => {
+    document.getElementById("starPopup").style.display = "none";
+});
